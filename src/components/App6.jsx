@@ -15,7 +15,7 @@ export default function App6() {
       ></input>
       <button onClick={handleSubmit}>Add</button>
       <hr></hr>
-      {hobby && hobby.map((value, index) => <li key={index}>{value}</li>)}
+      {hobby && hobby.map((value, index) => <ul key={index}>{value}</ul>)}
     </div>
   );
 }
