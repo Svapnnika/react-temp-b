@@ -6,7 +6,10 @@ export default function App9() {
   const [total, setTotal] = useState(0);
   useEffect(() => {
     setTotal(Number(num1)+Number(num2));
-  },[num1,num2])
+  },[num1])
+  useEffect(() => {
+    setTotal(Number(num1)*Number(num2));
+  },[num2])
   return (
     <div>
         <h2>Add 2 numbers and get total</h2>

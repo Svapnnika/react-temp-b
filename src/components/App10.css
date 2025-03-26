@@ -1,0 +1,17 @@
+.main{
+    background-color: cadetblue;
+    height: 400px;
+    width: 400px;
+    margin-left: 450px;
+}
+button:hover{
+    background-color: black;
+    color: thistle;
+}
+button{
+    margin: 20px;
+    padding: 8px;
+}
+.container{
+    display: flex;
+}
