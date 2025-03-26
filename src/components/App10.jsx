@@ -1,52 +1,70 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState,useRef, useEffect } from "react";
 import "./App10.css"
 export default function App10() {
     const [run,setRun] = useState(0);
     const [wicket,setWicket] = useState(0);
     const [showmsg,setShowMessage] = useState("Lets begin the game!!");
+    const runRef = useRef();
+    const wicketRef = useRef();
+    const msgRef = useRef();
     const handleRun=()=>{
-        setRun(run+1);
+        if(wicket < 10){
+        setRun(run+1), setShowMessage("Hurray!! Well Done.");
+        runRef.current.style.background = "teal";
+        wicketRef.current.style.transform = "scale(1)";
+        runRef.current.style.transform = "scale(1.1)";
+        wicketRef.current.style.background = "bisque"
     }
+};
     const handleWicket=()=>{
-        setWicket(wicket+1);
+        wicket < 10 && setWicket(wicket+1);
+        if(wicket < 9){
+            setShowMessage("Better luck next tym!");
+            runRef.current.style.backgroundColor = "brown";
+            runRef.current.style.transform = "scale(1)";
+            wicketRef.current.style.transform = "scale(1.1)";
+            wicketRef.current.style.backgroundColor = "thistle";
+        }
+        else{
+            setShowMessage("Game Over!");
+            msgRef.current.style.backgroundColor = "silver";
+            runRef.current.style.backgroundColor = "gray";
+            wicketRef.current.style.backgroundColor = "lavender";
+        }
     }
-    useEffect(()=>{
-        run > 0 && setShowMessage("Hurray!! Well Done.");
-        const timer = setTimeout(() => {
-            setShowMessage(null);
-            }, 4000);
-            return () => clearTimeout(timer);
-    },[run]);
-    useEffect(()=>{
-        wicket > 9 && setShowMessage("Game Over!");
-        wicket > 10 && setWicket(10)
-        wicket > 0 && wicket < 9 && setShowMessage("Better luck next time!");
-        const timer = setTimeout(() => {
-            setShowMessage(null);
-            }, 4000);
-            return () => clearTimeout(timer);
-    },[wicket]);
+    // useEffect(()=>{
+    //     run > 0 && wicket < 10 && setShowMessage("Hurray!! Well Done.");
+    //     const timer = setTimeout(() => {
+    //         setShowMessage(null);
+    //         }, 4000);
+    //         return () => clearTimeout(timer);
+    // },[run]);
+    // useEffect(()=>{
+    //     wicket > 9 && setShowMessage("Game Over!");
+    //     wicket > 10 && setWicket(10)
+    //     wicket > 0 && wicket < 9 && setShowMessage("Better luck next time!");
+    //     const timer = setTimeout(() => {
+    //         setShowMessage(null);
+    //         }, 4000);
+    //         return () => clearTimeout(timer);
+    // },[wicket]);
     return (
       <div className="main">
-        <h1 style={{textAlign:'center'}}>Cricket Score</h1>
+        <h1>Cricket Score</h1>
         <div className="container">
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginRight: '40px' }}>
+            <div className="run" ref={runRef}>
                 <button onClick={handleRun}>Run</button>
                 <div style={{ textAlign: 'center', marginTop: '3px' }}>{run}</div>
             </div>
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <div className="wicket" ref={wicketRef}>
                 <button onClick={handleWicket}>Wicket</button>
                 <div style={{ textAlign: 'center', marginTop: '3px' }}>{wicket}</div>
             </div>
         </div>
-        <hr /> 
-        <div style={{
-            color: showmsg === "Well Done!" ? 'black' : 'balck',
-            margin: '10px 0',
-            fontWeight: 'bold',
-            textAlign: 'center'
-        }}>
+        <hr />
+        <div className="message" ref={msgRef}>
+            {" "}
             {showmsg}
         </div>
       </div>
