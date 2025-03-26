@@ -10,11 +10,14 @@ export default function App11() {
     <div>
         <h1>Text Changes according to input color given.</h1>
         <p>
-            <input type="text" placeholder='Enter color' onChange={(e) => setColor(e.target.value)}/>
+            <input type="text" placeholder='Enter color' 
+            onChange={(e) => setColor(e.target.value)}
+            style = {{padding: '10px'}}
+            />
             <button onClick={handleSubmit}>Submit</button>
         </p>
         <p>
-            <h2 ref={msgRef}>Hello Svap!</h2>
+            <h1 ref={msgRef}>Hello Svap!</h1>
         </p>
     </div>
   )

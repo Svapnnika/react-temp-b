@@ -12,6 +12,7 @@ export default function App6() {
         type="text"
         placeholder="Enter your hobby"
         onChange={(event) => setText(event.target.value)}
+        style={{padding:'10px'}}
       ></input>
       <button onClick={handleSubmit}>Add</button>
       <hr></hr>

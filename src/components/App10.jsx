@@ -10,8 +10,10 @@ export default function App10() {
     const msgRef = useRef();
     const handleRun=()=>{
         if(wicket < 10){
-        setRun(run+1), setShowMessage("Hurray!! Well Done.");
-        runRef.current.style.background = "teal";
+        setRun(run+v), setShowMessage("Hurray!! Well Done.");
+        if (v===1) runRef.current.style.backgroundColor = "silver";
+        if (v===4) runRef.current.style.backgroundColor = "teal";
+        if (v===6) runRef.current.style.backgroundColor = "teal";
         wicketRef.current.style.transform = "scale(1)";
         runRef.current.style.transform = "scale(1.1)";
         wicketRef.current.style.background = "bisque"
@@ -54,12 +56,14 @@ export default function App10() {
         <h1>Cricket Score</h1>
         <div className="container">
             <div className="run" ref={runRef}>
-                <button onClick={handleRun}>Run</button>
-                <div style={{ textAlign: 'center', marginTop: '3px' }}>{run}</div>
+                <button onClick={()=>handleRun(1)}>1</button>
+                <button onClick={()=>handleRun(4)}>4</button>
+                <button onClick={()=>handleRun(6)}>6</button>
+                <div style={{ textAlign: 'center', marginTop: '3px', color:'black'}}>{run}</div>
             </div>
             <div className="wicket" ref={wicketRef}>
                 <button onClick={handleWicket}>Wicket</button>
-                <div style={{ textAlign: 'center', marginTop: '3px' }}>{wicket}</div>
+                <div style={{ textAlign: 'center', marginTop: '3px', color:'black' }}>{wicket}</div>
             </div>
         </div>
         <hr />
