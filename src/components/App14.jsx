@@ -10,6 +10,7 @@ export default function App14() {
       <h1>This is App14</h1>
       <Parent name="svap">
         <Child1 />
+        <hr />
         <Child2 />
       </Parent>
     </div>

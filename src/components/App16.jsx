@@ -19,13 +19,14 @@ export default function App16() {
       <h1>App16</h1>
       <input type="number" placeholder='Enter a num'
       ref={numRef}
-      style={{padding:'10px'}}
+      style={{padding:'10px', backgroundColor: 'black',
+        color: 'thistle'}}
       />
       <button onClick={handleSubmit}>Submit</button>
 
       {message && (
         <div>
-          <p style={{margin: 0, color: 'bisque'}}>{message}</p>
+          <p style={{margin: 0, color: 'beige'}}>{message}</p>
         </div>
       )}
     </div>
