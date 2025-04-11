@@ -8,7 +8,12 @@ export default function App11() {
     }
   return (
     <div>
-        <h1>Text Changes according to input color given.</h1>
+        <h1>useRef is a React hook that lets you:</h1>
+        <ul>
+            <li>Reference a DOM element (like an input or div).</li>
+            <li>Store a mutable value that doesn’t trigger re-renders when it changes.</li>
+            <li>Here, Text Changes according to input color given.</li>
+        </ul>
         <p>
             <input type="text" placeholder='Enter color' 
             onChange={(e) => setColor(e.target.value)}
